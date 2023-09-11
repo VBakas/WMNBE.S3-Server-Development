@@ -1,0 +1,42 @@
+<%- include('../includes/head.ejs') %>
+
+    <%- include('../includes/navigation.ejs') %>
+
+        <main>
+            <% if (prods.length> 0) { %>
+                <div class="index-product-grid">
+                    <% for (let product of prods) { %>
+                        <div class="index-product-item">
+                            <header class="index-product-header">
+                                <h1 class="index-product-title">
+                                    <%= product.title %>
+                                </h1>
+                            </header>
+                            <div class="index-product-image">
+                                <img src="<%= product.imageUrl %>" alt="<%= product.title %>">
+                            </div>
+                            <div class="index-product-content">
+                                <h2 class="product-price">$ <%= product.price %>
+                                </h2>
+                            </div>
+                            <div class="index-product-btns">
+                                <div>
+                                    <a href="/products/<%= product._id %>">More Info</a>
+                                </div>
+                            </div>
+                            <div class="index-product-btns">
+                                <% if (isAuthenticated) { %>
+                                    <%- include('../includes/add-to-wishlist.ejs', {product: product}) %>
+                                        <% } %>
+                            </div>
+                        </div>
+                        <% } %>
+                </div>
+                <% } else { %>
+                    <div class="no-product">
+                        <h1>No Products Found!</h1>
+                    </div>
+                    <% } %>
+        </main>
+
+        <%- include('../includes/end.ejs') %>

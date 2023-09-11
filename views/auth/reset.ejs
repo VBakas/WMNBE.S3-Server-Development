@@ -1,0 +1,19 @@
+<%- include('../includes/head.ejs') %>
+
+    <%- include('../includes/navigation.ejs') %>
+        <main>
+            <div class="bform">
+                <div class="reset-form-container">
+                    <form action="/reset" method="POST">
+
+                        <label for="email">E-Mail</label>
+                        <input type="email" name="email" id="email">
+
+                        <div class="freset">
+                            <a href="/reset">Reset Your Password</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <%- include('../includes/end.ejs') %>

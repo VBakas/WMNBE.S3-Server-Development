@@ -1,0 +1,50 @@
+<header class="main-header">
+    <nav class="main-header-nav">
+        <div class="navbar-container">
+            <ul class="navbar-item-list">
+                <li class="navbar-item">
+                    <a class="<%= path === '/' ? 'active' : '' %>" href="/">Home</a>
+                </li>
+                <li class="navbar-item">
+                    <a class="<%= path === '/products' ? 'active' : '' %>" href="/products">Products</a>
+                </li>
+                <% if (isAuthenticated) { %>
+                    <li class="navbar-item">
+                        <a class="<%= path === '/wishlist' ? 'active' : '' %>" href="/wishlist">Wishlist</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a class="<%= path === '/subscriptions' ? 'active' : '' %>" href="/subscriptions">
+                            Subscriptions</a>
+                    </li>
+                    <% if (role=='admin' ){ %>
+                        <li class="navbar-item">
+                            <a class="<%= path === '/admin/add-product' ? 'active' : '' %>"
+                                href="/admin/add-product">Add
+                                Product</a>
+                        </li>
+                        <li class="navbar-item">
+                            <a class="<%= path === '/admin/products' ? 'active' : '' %>" href="/admin/products">Admin
+                                Products</a>
+                        </li>
+                        <% } %>
+                            <% } %>
+            </ul>
+            <ul class="navbar-item-list">
+                <% if (!isAuthenticated) { %>
+                    <li class="navbar-item">
+                        <a class="<%= path === '/login' ? 'active' : '' %>" href="/login">Login</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a class="<%= path === '/signup' ? 'active' : '' %>" href="/signup">Signup</a>
+                    </li>
+                    <% } else { %>
+                        <li class="navbar-item">
+                            <form action="/logout" method="post">
+                                <button type="submit">Logout</button>
+                            </form>
+                        </li>
+                        <% } %>
+            </ul>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,35 @@
+<%- include('../includes/head.ejs') %>
+    <%- include('../includes/navigation.ejs') %>
+
+        <main>
+            <div class="sub-product-flex">
+                <div class="subscribe-product-header">
+                    <h1>Subscription Options</h1>
+                </div>
+                <% if (subs.length> 0) { %>
+                    <div class="subscribe-product-grid">
+                        <% for (let subscription of subs) { %>
+                            <div class="subscribe-product-item">
+                                <header>
+                                    <h2 class="subscribe-product-title">
+                                        <%= subscription.title %>
+                                    </h2>
+                                </header>
+                                <div class="index-product-content">
+                                    <h3>
+                                        $ <%= subscription.price %>
+                                    </h3>
+                                </div>
+                                <div class="subscribe-product-btns">
+                                    <a class="btn" href="/checkout/<%= subscription._id %>">Subscribe Now!</a>
+                                </div>
+                            </div>
+                            <% } %>
+                    </div>
+            </div>
+            <% } else { %>
+                <h1>No Subscriptions Found!</h1>
+                <% } %>
+        </main>
+
+        <%- include('../includes/end.ejs') %>

@@ -1,0 +1,26 @@
+<%- include('../includes/head.ejs') %>
+
+    <%- include('../includes/navigation.ejs') %>
+        <main>
+            <div class="bform">
+                <div class="signup-form-container">
+                    <form action="/signup" method="POST">
+
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" />
+
+                        <label for="email">E-Mail</label>
+                        <input type="email" name="email" id="email" />
+
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" />
+
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" name="confirmPassword" id="confirmPassword" />
+
+                        <button class="fbtn" type="submit">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <%- include('../includes/end.ejs') %>

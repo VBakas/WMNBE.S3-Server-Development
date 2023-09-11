@@ -1,0 +1,33 @@
+<%- include('../includes/head.ejs') %>
+    <%- include('../includes/navigation.ejs') %>
+
+        <main>
+            <div class="checkout-product-flex">
+                <div class="checkout-product-header">
+                    <h1>Checkout</h1>
+                </div>
+                <div class="checkout-product-item">
+                    <h2>
+                        <%= subscriptionType %> Subscription - $<%= subscriptionPrice %>
+                    </h2>
+                    <div class="checkout-btns">
+                        <button id="sub-btn">Proceed to Payment</button>
+
+                        <button type="submit">Cancel Payment</button>
+                    </div>
+                    <script src="https://js.stripe.com/v3/"></script>
+                    <script>
+                        // Publishable key
+                        let stripe = Stripe('pk_test_51NLTqvEcNomZko43UAb5bicQCWet6yhIcgfAkkLORQBiFdmTumKh2caCMfu58jb1STWishRVKqEBC6atMkKIrJue003BSf5VFj');
+                        let subBtn = document.getElementById('sub-btn');
+                        subBtn.addEventListener('click', function () {
+                            stripe.redirectToCheckout({
+                                sessionId: '<%= sessionId %>'
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </main>
+
+        <%- include('../includes/end.ejs') %>
